@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jpmcsapp" target="1.8" />
-      <module name="jpmorganonlinetest" target="1.8" />
+      <module name="jpmorganonlinetest" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

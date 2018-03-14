@@ -12,13 +12,14 @@ public class SalesRecord {
 
     public String printMe(){
 
-        return  "{" +
-                "\"msgtype\":\"" + msgtype + "\"," +
-                "\"pname\":\"" + pname + "\"," +
-                "\"price\":" + price + "," +
-                "\"volume\":" + volume + "," +
-                "\"adjust\":\"" + adjust + "\"" +
-                "}" ;
+        return new StringBuilder()
+                .append("{")
+                .append("\"msgtype\":\"").append(msgtype).append("\",")
+                .append("\"pname\":\"").append(pname).append("\",")
+                .append("\"price\":").append(price).append(",")
+                .append("\"volume\":").append(volume).append(",")
+                .append("\"adjust\":\"").append(adjust).append("\"")
+                .append("}").toString();
 
     }
 

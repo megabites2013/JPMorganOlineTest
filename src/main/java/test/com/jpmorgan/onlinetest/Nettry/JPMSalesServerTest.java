@@ -146,18 +146,19 @@ class MockClientHandler extends ChannelHandlerAdapter {
         ctx.close();
     }
 
-    public String prepareClientMsg()  {
-        int typidx=new Random().nextInt(TYPES.size());
-        int prodidx=new Random().nextInt(PRODUCTS.size());
-        int validx=new Random().nextInt(VALUES.size());
-        int adjidx=new Random().nextInt(ADJUSTS.size());
-        return  "{" +
-                "\"msgtype\":\"" + TYPES.get(typidx) + "\"," +
-                "\"pname\":\"" + PRODUCTS.get(prodidx) + "\"," +
-                "\"price\":" + VALUES.get(validx) + "," +
-                "\"volume\":" + (typidx==1?  (new Random().nextInt(10)+1):1) + "," +
-                "\"adjust\":\"" + (typidx!=2?  "null": ADJUSTS.get(adjidx) +"|"+(new Random().nextInt(3)+1)) +
-                "\"}" ;
+    private String prepareClientMsg() {
+        int typidx = new Random().nextInt(TYPES.size());
+        int prodidx = new Random().nextInt(PRODUCTS.size());
+        int validx = new Random().nextInt(VALUES.size());
+        int adjidx = new Random().nextInt(ADJUSTS.size());
+        return new StringBuilder()
+                .append("{")
+                .append("\"msgtype\":\"").append(TYPES.get(typidx)).append("\",")
+                .append("\"pname\":\"").append(PRODUCTS.get(prodidx)).append("\",")
+                .append("\"price\":").append(VALUES.get(validx)).append(",")
+                .append("\"volume\":").append(typidx == 1 ? (new Random().nextInt(10) + 1) : 1).append(",")
+                .append("\"adjust\":\"").append(typidx != 2 ? "null" : ADJUSTS.get(adjidx) + "|" + (new Random().nextInt(3) + 1))
+                .append("\"}").toString();   // Json fields - Type:Produst:price:volume:adjustment
     }
 }
 
