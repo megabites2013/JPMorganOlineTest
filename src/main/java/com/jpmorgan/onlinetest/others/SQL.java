@@ -21,6 +21,27 @@ insert into stuscore values ('w2','math',99,3);
 insert into stuscore values ('w2','Chinese',98,3);
 insert into stuscore values ('w2','english',97,3);
 -------------------------------------------------------
+
+SQL: select * into b from a where 1<>1
+(where1=1，拷贝表结构和数据内容)
+
+
+用一条SQL 语句 查询出每门课都大于80 分的学生姓名
+select name from table group by name having min(fenshu)>80
+
+stuid	name	math	Chinese	english
+1	zhang3	49	71	64
+2	li4	80	92	77
+3	w2	99	98	97
+
+select a.stuid, a.name,
+(select b.score from stuscore b where subject='math' and b.name = a.name) as math,
+(select b.score from stuscore b where subject='Chinese' and b.name = a.name) as Chinese,
+(select b.score from stuscore b where subject='english' and b.name = a.name) as english
+from stuscore a
+group by a.stuid,a.name
+
+
 1.       计算每个人的总成绩并排名
 select name,sum(score) as allscore from stuscore group by name order by allscore
 
@@ -78,5 +99,35 @@ order by t3.score desc
 (select count(*) from stuscore where score >80 and subject=t1.subject) as 优
 from stuscore t1
 group by subject
+
+原表:
+courseid coursename score
+-------------------------------------
+1 Java 70
+2 oracle 90
+3 xml 40
+4 jsp 30
+5 servlet 80
+
+显示成
+1 Java 70 pass
+2 oracle 90 pass
+3 xml 40 fail
+4 jsp 30 fail
+5 servlet 80 pass
+---------------------------------------------------
+写出此查询语句
+select courseid, coursename ,score ,decode（sign(score-60),-1,'fail','pass') as mark from course
+
+ decode（columnname，值1,翻译值1,值2,翻译值2,...值n,翻译值n,缺省值）
+ sign()函数根据取正负号，某个值是0、正数还是负数，分别返回0、1、-1，
+
+
+
+
+
+
+
+
 
  */
