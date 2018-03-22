@@ -16,6 +16,9 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ArrayShuffler<T> {
+
+
+
     private T[] arr;
     private AtomicInteger index;
     private Semaphore semaphore;
@@ -37,9 +40,11 @@ public class ArrayShuffler<T> {
         }
     }
 
-    public T getNext() throws InterruptedException {
+    public T getNext() throws InterruptedException  {
         semaphore.acquire();
         int ind = index.getAndIncrement();
         return arr[ind];
     }
+
+
 }
