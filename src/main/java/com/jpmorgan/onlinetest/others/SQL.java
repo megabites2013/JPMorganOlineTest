@@ -122,7 +122,8 @@ select courseid, coursename ,score ,decode（sign(score-60),-1,'fail','pass') as
  decode（columnname，值1,翻译值1,值2,翻译值2,...值n,翻译值n,缺省值）
  sign()函数根据取正负号，某个值是0、正数还是负数，分别返回0、1、-1，
 
-
+12.通过 SQL，您如何按字母顺序选取 Persons 表中 LastName 介于 Adams 和 Carter 的所有记录？
+正确答案：SELECT * FROM Persons WHERE LastName BETWEEN 'Adams' AND 'Carter'
 
 
 
